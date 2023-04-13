@@ -27,6 +27,7 @@ public class AVL_Test {
         avl.Insert(8);
     }
 
+    // Test for default constructor
     @Test
     public void testConstructor() {
         AVL avl2 = new AVL();
@@ -34,6 +35,7 @@ public class AVL_Test {
         assertNull(avl2.getRoot());
     }
 
+    // Test for constructor with integer value
     @Test
     public void testConstructorWithVal() {
         AVL avl2 = new AVL(5);
@@ -41,6 +43,7 @@ public class AVL_Test {
         assertTrue(avlContains(avl2.getRoot(), 5));
     }
 
+    // Test for constructor with node
     @Test
     public void testConstructorWithNode() {
         AVL avl2 = new AVL(avl.getRoot());
@@ -48,6 +51,7 @@ public class AVL_Test {
         assertTrue(avlContains(avl2.getRoot(), 5));
     }
 
+    // Tests setRoot Method
     @Test
     public void testSetRoot() {
         // Check if the root is set correctly
@@ -57,12 +61,14 @@ public class AVL_Test {
         assertEquals(10, avl.getRoot().getData());
     }
 
+    // Tests getRoot Method
     @Test
     public void testGetRoot() {
         // Check if the root is correct
         assertEquals(5, avl.getRoot().getData());
     }
 
+    // Tests insert with integer value
     @Test
     public void testInsertVal() {
         // Check if the tree contains the inserted values
@@ -79,6 +85,7 @@ public class AVL_Test {
         assertFalse(avlContains(avl.getRoot(), 9));
     }
 
+    // Tests insert with node
     @Test
     public void testInsertNode() {
         AVL avl2 = new AVL();
@@ -87,12 +94,7 @@ public class AVL_Test {
         assertTrue(avlContains(avl2.getRoot(), 5));
     }
 
-    // @Test
-    // public void testBalance() {
-    // // Check if the tree is balanced
-    // assertTrue(isBalanced(avl.getRoot()));
-    // }
-
+    // Tests Search method
     @Test
     public void testSearch() {
         // Check if the tree contains the inserted values
@@ -109,6 +111,7 @@ public class AVL_Test {
 
     }
 
+    // Tests printInorder method
     @Test
     public void testInOrder() {
         // Check if the tree is traversed in order
@@ -130,6 +133,7 @@ public class AVL_Test {
         assertEquals(expectedOutput, outContent.toString());
     }
 
+    // Tests printBF method
     @Test
     public void testPrintBF() {
         AVL bst = new AVL();
@@ -148,6 +152,52 @@ public class AVL_Test {
 
         String expectedOutput = "50 30 70 20 40 60 80 \n";
         assertEquals(expectedOutput, outContent.toString());
+    }
+
+    @Test
+    public void sequentialInsertDelete() {
+        AVL avl2 = new AVL();
+        // Check if the root is null
+        assertNull(avl2.getRoot());
+
+        // Insert values into the AVL tree
+        avl2.Insert(5);
+        assertTrue(avlContains(avl2.getRoot(), 5));
+        avl2.Insert(3);
+        assertTrue(avlContains(avl2.getRoot(), 3));
+        avl2.Insert(7);
+        assertTrue(avlContains(avl2.getRoot(), 7));
+        avl2.Insert(2);
+        assertTrue(avlContains(avl2.getRoot(), 2));
+        avl2.Insert(4);
+        assertTrue(avlContains(avl2.getRoot(), 4));
+        avl2.Insert(6);
+        assertTrue(avlContains(avl2.getRoot(), 6));
+        avl2.Insert(8);
+        assertTrue(avlContains(avl2.getRoot(), 8));
+
+        // Sequentially delete values from the AVL tree
+        avl2.Delete(2);
+        assertFalse(avlContains(avl2.getRoot(), 2));
+        avl2.Delete(3);
+        assertFalse(avlContains(avl2.getRoot(), 3));
+        avl2.Delete(5);
+        assertFalse(avlContains(avl2.getRoot(), 5));
+        avl2.Delete(7);
+        assertFalse(avlContains(avl2.getRoot(), 7));
+        avl2.Delete(4);
+        assertFalse(avlContains(avl2.getRoot(), 4));
+        avl2.Delete(6);
+        assertFalse(avlContains(avl2.getRoot(), 6));
+        avl2.Delete(8);
+        assertFalse(avlContains(avl2.getRoot(), 8));
+
+        // Check if the root is null after deletion of all values
+        assertNull(avl2.getRoot());
+
+        // insertion after deletion
+        avl2.Insert(5);
+        assertTrue(avlContains(avl2.getRoot(), 5));
     }
 
     // BONUS DELETE TEST
@@ -195,18 +245,4 @@ public class AVL_Test {
             return avlContains(node.getRight(), val);
         }
     }
-
-    // private boolean isBalanced(TNode node) {
-    // if (node == null) {
-    // return true;
-    // }
-
-    // int balanceFactor = Math.abs((avl.getHeight(node.getLeft())) -
-    // avl.getHeight(node.getRight()));
-    // if (balanceFactor > 1) {
-    // return false;
-    // }
-
-    // return isBalanced(node.getLeft()) && isBalanced(node.getRight());
-    // }
 }
