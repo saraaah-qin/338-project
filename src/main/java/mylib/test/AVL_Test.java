@@ -154,6 +154,7 @@ public class AVL_Test {
         assertEquals(expectedOutput, outContent.toString());
     }
 
+    // Sequential insertion with default constructor
     @Test
     public void sequentialInsertDelete() {
         AVL avl2 = new AVL();
@@ -198,6 +199,232 @@ public class AVL_Test {
         // insertion after deletion
         avl2.Insert(5);
         assertTrue(avlContains(avl2.getRoot(), 5));
+    }
+
+    // Sequential insertion with val constructor
+    @Test
+    public void sequentialInsertDeleteVal() {
+        AVL avl2 = new AVL(5);
+        // Check if the root is correct
+        assertEquals(5, avl2.getRoot().getData());
+
+        // Insert values into the AVL tree
+        avl2.Insert(3);
+        assertTrue(avlContains(avl2.getRoot(), 3));
+        avl2.Insert(7);
+        assertTrue(avlContains(avl2.getRoot(), 7));
+        avl2.Insert(2);
+        assertTrue(avlContains(avl2.getRoot(), 2));
+        avl2.Insert(4);
+        assertTrue(avlContains(avl2.getRoot(), 4));
+        avl2.Insert(6);
+        assertTrue(avlContains(avl2.getRoot(), 6));
+        avl2.Insert(8);
+        assertTrue(avlContains(avl2.getRoot(), 8));
+
+        // Sequentially delete values from the AVL tree
+        avl2.Delete(2);
+        assertFalse(avlContains(avl2.getRoot(), 2));
+        avl2.Delete(3);
+        assertFalse(avlContains(avl2.getRoot(), 3));
+        avl2.Delete(5);
+        assertFalse(avlContains(avl2.getRoot(), 5));
+        avl2.Delete(7);
+        assertFalse(avlContains(avl2.getRoot(), 7));
+        avl2.Delete(4);
+        assertFalse(avlContains(avl2.getRoot(), 4));
+        avl2.Delete(6);
+        assertFalse(avlContains(avl2.getRoot(), 6));
+        avl2.Delete(8);
+        assertFalse(avlContains(avl2.getRoot(), 8));
+
+        // Check if the root is null after deletion of all values
+        assertNull(avl2.getRoot());
+
+        // insertion after deletion
+        avl2.Insert(5);
+        assertTrue(avlContains(avl2.getRoot(), 5));
+    }
+
+    // // Sequential insertion with node constructor
+    @Test
+    public void sequentialInsertDeleteNode() {
+        AVL avl2 = new AVL(new TNode(5, 0, null, null, null));
+        // Check if the root is correct
+        assertEquals(5, avl2.getRoot().getData());
+
+        // Insert values into the AVL tree
+        avl2.Insert(3);
+        assertTrue(avlContains(avl2.getRoot(), 3));
+        avl2.Insert(7);
+        assertTrue(avlContains(avl2.getRoot(), 7));
+        avl2.Insert(2);
+        assertTrue(avlContains(avl2.getRoot(), 2));
+        avl2.Insert(4);
+        assertTrue(avlContains(avl2.getRoot(), 4));
+        avl2.Insert(6);
+        assertTrue(avlContains(avl2.getRoot(), 6));
+        avl2.Insert(8);
+        assertTrue(avlContains(avl2.getRoot(), 8));
+
+        // Sequentially delete values from the AVL tree
+        avl2.Delete(2);
+        assertFalse(avlContains(avl2.getRoot(), 2));
+        avl2.Delete(3);
+        assertFalse(avlContains(avl2.getRoot(), 3));
+        avl2.Delete(5);
+        assertFalse(avlContains(avl2.getRoot(), 5));
+        avl2.Delete(7);
+        assertFalse(avlContains(avl2.getRoot(), 7));
+        avl2.Delete(4);
+        assertFalse(avlContains(avl2.getRoot(), 4));
+        avl2.Delete(6);
+        assertFalse(avlContains(avl2.getRoot(), 6));
+        avl2.Delete(8);
+        assertFalse(avlContains(avl2.getRoot(), 8));
+
+        // Check if the root is null after deletion of all values
+        assertNull(avl2.getRoot());
+
+        // insertion after deletion
+        avl2.Insert(5);
+        assertTrue(avlContains(avl2.getRoot(), 5));
+    }
+
+    // Sequential insertion Node with default constructor
+    @Test
+    public void sequentialNodeInsertDelete() {
+        AVL avl2 = new AVL();
+
+        // Check if the root is null
+        assertNull(avl2.getRoot());
+
+        // Insert values into the AVL tree
+        avl2.Insert(new TNode(3, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 3));
+        avl2.Insert(new TNode(7, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 7));
+        avl2.Insert(new TNode(2, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 2));
+        avl2.Insert(new TNode(4, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 4));
+        avl2.Insert(new TNode(6, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 6));
+        avl2.Insert(new TNode(8, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 8));
+
+        // Sequentially delete values from the AVL tree
+        avl2.Delete(2);
+        assertFalse(avlContains(avl2.getRoot(), 2));
+        avl2.Delete(3);
+        assertFalse(avlContains(avl2.getRoot(), 3));
+        avl2.Delete(5);
+        assertFalse(avlContains(avl2.getRoot(), 5));
+        avl2.Delete(7);
+        assertFalse(avlContains(avl2.getRoot(), 7));
+        avl2.Delete(4);
+        assertFalse(avlContains(avl2.getRoot(), 4));
+        avl2.Delete(6);
+        assertFalse(avlContains(avl2.getRoot(), 6));
+        avl2.Delete(8);
+        assertFalse(avlContains(avl2.getRoot(), 8));
+
+        // Check if the root is null after deletion of all values
+        assertNull(avl2.getRoot());
+
+        // insertion after deletion
+        avl2.Insert(new TNode(5, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 5));
+    }
+
+    // Sequential insertion Node with val constructor
+    @Test
+    public void sequentialNodeInsertDeleteVal() {
+        AVL avl2 = new AVL(5);
+        // Check if the root is correct
+        assertEquals(5, avl2.getRoot().getData());
+
+        // Insert values into the AVL tree
+        avl2.Insert(new TNode(3, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 3));
+        avl2.Insert(new TNode(7, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 7));
+        avl2.Insert(new TNode(2, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 2));
+        avl2.Insert(new TNode(4, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 4));
+        avl2.Insert(new TNode(6, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 6));
+        avl2.Insert(new TNode(8, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 8));
+
+        // Sequentially delete values from the AVL tree
+        avl2.Delete(2);
+        assertFalse(avlContains(avl2.getRoot(), 2));
+        avl2.Delete(3);
+        assertFalse(avlContains(avl2.getRoot(), 3));
+        avl2.Delete(5);
+        assertFalse(avlContains(avl2.getRoot(), 5));
+        avl2.Delete(7);
+        assertFalse(avlContains(avl2.getRoot(), 7));
+        avl2.Delete(4);
+        assertFalse(avlContains(avl2.getRoot(), 4));
+        avl2.Delete(6);
+        assertFalse(avlContains(avl2.getRoot(), 6));
+        avl2.Delete(8);
+        assertFalse(avlContains(avl2.getRoot(), 8));
+
+        // Check if the root is null after deletion of all values
+        assertNull(avl2.getRoot());
+
+        // insertion after deletion
+        avl2.Insert(new TNode(3, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 3));
+    }
+
+    // Sequential insertion Node with node constructor
+    @Test
+    public void sequentialNodeInsertDeleteNode() {
+        AVL avl2 = new AVL(new TNode(5, 0, null, null, null));
+        // Check if the root is correct
+        assertEquals(5, avl2.getRoot().getData());
+
+        // Insert values into the AVL tree
+        avl2.Insert(new TNode(3, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 3));
+        avl2.Insert(new TNode(7, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 7));
+        avl2.Insert(new TNode(2, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 2));
+        avl2.Insert(new TNode(4, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 4));
+        avl2.Insert(new TNode(6, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 6));
+        avl2.Insert(new TNode(8, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 8));
+
+        // Sequentially delete values from the AVL tree
+        avl2.Delete(2);
+        assertFalse(avlContains(avl2.getRoot(), 2));
+        avl2.Delete(3);
+        assertFalse(avlContains(avl2.getRoot(), 3));
+        avl2.Delete(5);
+        assertFalse(avlContains(avl2.getRoot(), 5));
+        avl2.Delete(7);
+        assertFalse(avlContains(avl2.getRoot(), 7));
+        avl2.Delete(4);
+        assertFalse(avlContains(avl2.getRoot(), 4));
+        avl2.Delete(6);
+        assertFalse(avlContains(avl2.getRoot(), 6));
+        avl2.Delete(8);
+        assertFalse(avlContains(avl2.getRoot(), 8));
+
+        // Check if the root is null after deletion of all values
+        assertNull(avl2.getRoot());
+
+        // insertion after deletion
+        avl2.Insert(new TNode(3, 0, null, null, null));
+        assertTrue(avlContains(avl2.getRoot(), 3));
     }
 
     // BONUS DELETE TEST
