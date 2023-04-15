@@ -84,7 +84,7 @@ public class StackLL_Test {
         assertEquals(0, stack.getSize());
     }
 
-    // Test isEmpy method
+    // Test isEmpty method
     @Test
     public void testIsEmpty() {
         StackLL stack = new StackLL();
@@ -103,6 +103,27 @@ public class StackLL_Test {
         stack.delete(head);
         assertNull(stack.getHead());
         assertEquals(0, stack.getSize());
+    }
+
+    // Test peek method
+    @Test
+    public void testPeek() {
+        StackLL stack = new StackLL();
+        DNode head = new DNode(1);
+        stack.push(head);
+        assertEquals(head, stack.peek());
+        assertEquals(1, stack.getSize());
+    }
+
+    // Test search stack method
+    @Test
+    public void testSearch() {
+        StackLL stack = new StackLL();
+        DNode head = new DNode(1);
+        DNode node2 = new DNode(2);
+        stack.push(head);
+        assertEquals(head, stack.searchStack(head));
+        assertNull(stack.searchStack(node2));
     }
 
     // Test for sequential insert and delete with different methods

@@ -96,6 +96,15 @@ public class QueueLL_Test {
         assertNull(queue.search(node2));
     }
 
+    // Test peek method
+    @Test
+    public void testPeek() {
+        QueueLL queue = new QueueLL();
+        DNode node = new DNode(1);
+        queue.enqueue(node);
+        assertEquals(node, queue.peek());
+    }
+
     // Test for sequential insert and delete with different methods
     @Test
     public void testSequentialInsertAndDelete() {
