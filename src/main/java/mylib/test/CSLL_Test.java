@@ -6,9 +6,6 @@ import main.java.mylib.datastructures.nodes.DNode;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 public class CSLL_Test {
 
     // Test default constructor

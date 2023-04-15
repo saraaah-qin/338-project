@@ -66,10 +66,46 @@ public class DLL_Test {
     }
 
     // Test set sort method
+    @Test
+    public void testSetSort() {
+        DLL dll = new DLL();
+        DNode head = new DNode(1);
+        dll.setSorted(head);
+        assertEquals(head, dll.getSorted());
+    }
+
     // Test get sort method
+    @Test
+    public void testGetSort() {
+        DLL dll = new DLL();
+        DNode head = new DNode(1);
+        DNode head2 = new DNode(3);
+        dll.setSorted(head);
+        dll.setSorted(head2);
+        assertEquals(head2, dll.getSorted());
+    }
 
     // Test set tail pointer method
+    @Test
+    public void testSetTailPointer() {
+        DLL dll = new DLL();
+        DNode tail = new DNode(1);
+        DNode tail2 = new DNode(3);
+        dll.setTailPointer(tail2);
+        dll.setTailPointer(tail);
+        assertEquals(tail, dll.getTailPointer());
+    }
+
     // Test get tail pointer method
+    @Test
+    public void testGetTailPointer() {
+        DLL dll = new DLL();
+        DNode tail = new DNode(1);
+        DNode tail2 = new DNode(3);
+        dll.setTailPointer(tail);
+        dll.setTailPointer(tail2);
+        assertEquals(tail2, dll.getTailPointer());
+    }
 
     // Test set tail method
     @Test
