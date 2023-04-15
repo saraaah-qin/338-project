@@ -154,6 +154,7 @@ public class DLL_Test {
         DNode head = new DNode(3);
         DNode middle = new DNode(2);
         DNode tail = new DNode(1);
+
         dll.insertHead(head);
         dll.insertHead(tail);
         dll.insertHead(middle);

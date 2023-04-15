@@ -173,11 +173,53 @@ public class DLL extends SLL {
         setSize(getSize() + 1);
     }
 
-    // sort methods
+    // sort method
     @Override
     public void sort() {
-        super.sort();
-        setTail(getLastNode());
+        if (getHead() == null || getHead().getNext() == null) {
+            // Empty list or list with only one element is already sorted
+            return;
+        }
+
+        DNode currentNode = getHead();
+        DNode nextNode;
+        boolean swapped;
+
+        do {
+            swapped = false;
+            currentNode = getHead();
+
+            while (currentNode != null && currentNode.getNext() != null) {
+                nextNode = currentNode.getNext();
+
+                if (currentNode.getData() > nextNode.getData()) {
+                    // Swap the nodes
+                    DNode prevNode = currentNode.getPrev();
+                    DNode nextNextNode = nextNode.getNext();
+
+                    currentNode.setNext(nextNextNode);
+                    currentNode.setPrev(nextNode);
+                    nextNode.setNext(currentNode);
+                    nextNode.setPrev(prevNode);
+
+                    if (prevNode != null) {
+                        prevNode.setNext(nextNode);
+                    } else {
+                        setHead(nextNode);
+                    }
+
+                    if (nextNextNode != null) {
+                        nextNextNode.setPrev(currentNode);
+                    } else {
+                        setTail(currentNode);
+                    }
+
+                    swapped = true;
+                } else {
+                    currentNode = currentNode.getNext();
+                }
+            }
+        } while (swapped);
     }
 
     // O(n)
