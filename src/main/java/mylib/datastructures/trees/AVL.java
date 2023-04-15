@@ -125,12 +125,8 @@ public class AVL {
         root = newNode;
     }
 
-    // Helper method
-    // to insert
-    // a node
-    // with the
-    // given value
-    // into the tree
+    // Helper method to insert a node
+    // with the given value into the tree
 
     private TNode Insert(TNode node, int val) {
         if (node == null) {
