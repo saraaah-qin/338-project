@@ -199,6 +199,24 @@ public class DLL_Test {
         assertEquals(node2, dll.getTail());
     }
 
+    // Test delete node method
+    @Test
+    public void testDeleteNode() {
+        DLL dll = new DLL();
+        DNode node = new DNode(1);
+        DNode node2 = new DNode(3);
+        dll.insertHead(node);
+        dll.insertHead(node2);
+        dll.deleteNode(node);
+
+        // Check that node is now null
+        assertNull(dll.search(node));
+
+        // Check that tail is now the original tail
+        assertEquals(node2, dll.getHead());
+        assertEquals(node2, dll.getTail());
+    }
+
     // Test search method
     @Test
     public void testSearch() {
@@ -282,6 +300,34 @@ public class DLL_Test {
                 + "\n" + node + "\n" + node2 + "\n" + node3 + "\n" + node4 + "\n";
         assertEquals(expectedOutput, outContent.toString());
 
+    }
+
+    // Test for sequential insert and delete with different methods
+    @Test
+    public void testSequentialInsertAndDelete() {
+        DLL dll = new DLL();
+        DNode node = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+        DNode node4 = new DNode(4);
+
+        dll.insertHead(node);
+        assertEquals(node, dll.getHead());
+        dll.insertTail(node2);
+        assertEquals(node2, dll.getTail());
+        dll.insertHead(node3);
+        assertEquals(node3, dll.getHead());
+        dll.insertTail(node4);
+        assertEquals(node4, dll.getTail());
+
+        dll.deleteHead();
+        assertEquals(node, dll.getHead());
+        dll.deleteTail();
+        assertEquals(node2, dll.getTail());
+        dll.deleteNode(node2);
+
+        assertEquals(node, dll.getHead());
+        assertEquals(node, dll.getTail());
     }
 
 }

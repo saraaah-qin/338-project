@@ -79,4 +79,25 @@ public class CDLL_Test {
         assertEquals(middle, cdll.getTail());
     }
 
+    // Test for sequential insert and delete with different methods
+    @Test
+    public void testInsertDelete() {
+        CDLL cdll = new CDLL();
+        DNode node = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+
+        cdll.insertHead(node);
+        assertEquals(node, cdll.getHead());
+        cdll.insertTail(node3);
+        assertEquals(node3, cdll.getTail());
+        cdll.insertTail(node2);
+        assertEquals(node2, cdll.getTail());
+        cdll.deleteNode(node2);
+        assertEquals(node3, cdll.getTail());
+
+        cdll.deleteHead();
+        assertEquals(node3, cdll.getHead());
+    }
+
 }

@@ -264,6 +264,28 @@ public class CSLL_Test {
         assertNull(csll.search(head2));
     }
 
+    // Test for sequential insert and delete with different methods
+    @Test
+    public void testSequentialInsertAndDelete() {
+        CSLL csll = new CSLL();
+        DNode head = new DNode(1);
+        DNode head2 = new DNode(2);
+        DNode head3 = new DNode(3);
+
+        csll.insertHead(head);
+        assertEquals(head, csll.getHead());
+        csll.insertHead(head3);
+        assertEquals(head, csll.getTail());
+        csll.insertHead(head2);
+        assertEquals(head2, csll.getHead());
+
+        csll.deleteHead();
+        assertEquals(head3, csll.getHead());
+        csll.deleteTail();
+        assertEquals(head, csll.getTail());
+
+    }
+
     // // Test print method (unsorted)
     // @Test
     // public void testPrintUnsorted() {

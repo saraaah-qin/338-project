@@ -285,4 +285,30 @@ public class SLL_Test {
 
     }
 
+    // Test for sequential insert and delete with different methods
+    @Test
+    public void testSequentialInsertDelete() {
+        SLL sll = new SLL();
+        DNode node = new DNode(1);
+        DNode node2 = new DNode(2);
+        DNode node3 = new DNode(3);
+        DNode node4 = new DNode(4);
+
+        sll.insertHead(node);
+        assertEquals(node, sll.getHead());
+        sll.insertHead(node2);
+        assertEquals(node2, sll.getHead());
+        sll.insertHead(node3);
+        assertEquals(node3, sll.getHead());
+        sll.insertTail(node4);
+        assertEquals(node3, sll.getHead());
+
+        sll.deleteHead();
+        assertEquals(node2, sll.getHead());
+        sll.delete(node2);
+
+        assertEquals(node, sll.getHead());
+
+    }
+
 }
