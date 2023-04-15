@@ -1,17 +1,18 @@
 package main.java.mylib.datastructures.linear;
+
 import main.java.mylib.datastructures.nodes.DNode;
+
 /**
  * Circular Singly Linked Lists
  *
  */
-public class CSLL extends SLL
-{
+public class CSLL extends SLL {
     private DNode head;
     private DNode tail;
     private int size;
     private DNode pointerToTail;
 
-    //GETTERS & SETTERS
+    // GETTERS & SETTERS
     public DNode getHead() {
         return head;
     }
@@ -36,15 +37,15 @@ public class CSLL extends SLL
         this.tail = tail;
     }
 
-    public  DNode getpointerToTail() {
+    public DNode getpointerToTail() {
         return getHead();
     }
 
-    public  void setpointerToTail(DNode pointerToTail) {
+    public void setpointerToTail(DNode pointerToTail) {
         this.pointerToTail = pointerToTail;
     }
 
-    //CONSTRUCTORS
+    // CONSTRUCTORS
     public CSLL() {
         setHead(null);
         setTail(getHead());
@@ -59,23 +60,23 @@ public class CSLL extends SLL
         setSize(0);
     }
 
-    //INSERTION METHODS
-    //O(1)
+    // INSERTION METHODS
+    // O(1)
     @Override
     public void insertHead(DNode node) {
-        //System.out.println(getTail());
+        // System.out.println(getTail());
         super.insertHead(node);
-        if(getTail() == null) {
+        if (getTail() == null) {
             setTail(getHead());
-        }
-        else {
+        } else {
             getTail().setNext(getHead());
         }
 
     }
 
-    //O(n) - could have enhanced this by doing setPrev(head) to node and setNext(tail) to node
-    //but was trying to reduce the duplication of code and use the super class
+    // O(n) - could have enhanced this by doing setPrev(head) to node and
+    // setNext(tail) to node
+    // but was trying to reduce the duplication of code and use the super class
     @Override
     public void insertTail(DNode node) {
         super.insertTail(node);
@@ -83,47 +84,49 @@ public class CSLL extends SLL
         node.setNext(getHead());
     }
 
-    //O(n)
+    // O(n)
     @Override
     public void insert(DNode node, int position) {
         super.insert(node, position);
         setTail(getLastNode());
         getTail().setNext(getHead());
     }
+
     public void sortedInsert(DNode node) {
 
-		DNode current = getHead();
-        if(isSorted() == false) {
+        DNode current = getHead();
+        if (isSorted() == false) {
             sort();
         }
 
-		if(current == null) {
-			insertHead(node);
-            setSize(getSize()-1);
-            //System.out.println("UPDATED HEAD because null");
-		}
-
-        else if(getHead().getData() >= node.getData()) {
+        if (current == null) {
             insertHead(node);
-            setSize(getSize()-1);
-            //System.out.println("UPDATED because head is greater than node");
+            setSize(getSize() - 1);
+            // System.out.println("UPDATED HEAD because null");
         }
 
-        else if(getLastNode().getData() < node.getData()) {
-            insertTail(node);
-            setSize(getSize()-1);
+        else if (getHead().getData() >= node.getData()) {
+            insertHead(node);
+            setSize(getSize() - 1);
+            // System.out.println("UPDATED because head is greater than node");
         }
-		else {
-			current = getHead();
-			while(current.getNext() != getpointerToTail() && current.getData() != node.getData() && current.getNext().getData() < node.getData()) {
-				current = current.getNext(); 
-			}
-			node.setNext(current.getNext());
-			current.setNext(node);
-		}
-        setSize(getSize()+1);
+
+        else if (getLastNode().getData() < node.getData()) {
+            insertTail(node);
+            setSize(getSize() - 1);
+        } else {
+            current = getHead();
+            while (current.getNext() != getpointerToTail() && current.getData() != node.getData()
+                    && current.getNext().getData() < node.getData()) {
+                current = current.getNext();
+            }
+            node.setNext(current.getNext());
+            current.setNext(node);
+        }
+        setSize(getSize() + 1);
     }
-    //O(n^2) - nested traversal
+
+    // O(n^2) - nested traversal
     @Override
     public void sort() {
         DNode current = getHead();
@@ -137,7 +140,7 @@ public class CSLL extends SLL
         setHead(getSorted());
 
         DNode temp2 = getHead();
-        for(int i = 1; i < getSize(); i++) {
+        for (int i = 1; i < getSize(); i++) {
             temp2 = temp2.getNext();
 
         }
@@ -146,81 +149,86 @@ public class CSLL extends SLL
 
     }
 
-    //SEARCH
-    //Looks up node in the list
-    //O(n)
+    // SEARCH
+    // Looks up node in the list
+    // O(n)
     @Override
     public DNode search(DNode node) {
         DNode current = getHead();
         DNode match = null;
-        for(int i = 0; i < getSize(); i++) {
-            if(current == node) {
+        for (int i = 0; i < getSize(); i++) {
+            if (current == node) {
                 match = current;
             }
-            current = current.getNext(); 
+            current = current.getNext();
         }
         return match;
     }
 
-    //DELETION METHODS
-    //Delete head node
-    //O(1)
+    // DELETION METHODS
+    // Delete head node
+    // O(1)
     @Override
     public DNode deleteHead() {
         DNode temp = getHead();
         setHead(getHead().getNext());
         getTail().setNext(getHead());
-        setSize(getSize()-1);
+        setSize(getSize() - 1);
         return temp;
     }
 
-    //O(n)
+    // O(n)
     @Override
     public DNode deleteTail() {
         DNode current = getHead();
         DNode temp = null;
-        setSize(getSize()-1);
-        while(current.getNext() != getHead()) {
+        setSize(getSize() - 1);
+        while (current.getNext() != getHead()) {
             current = current.getNext();
-            if(current.getNext().getNext() == getHead()) {
+            if (current.getNext().getNext() == getHead()) {
                 temp = current.getNext();
                 current.setNext(getHead());
                 return temp;
             }
         }
-        return temp; 
+        return temp;
     }
 
-    //Complexity O(n)
+    // Complexity O(n)
     @Override
     public void delete(DNode node) {
         DNode current = getHead();
-        DNode temp = null;
-        setSize(getSize()-1);
+        DNode prev = null;
 
-        // If the id given is the first element
-        if (current== node && current != null) {
-            setSize(getSize()+1);
-            return;
-        }
-        //search for key until find node
-        while (current.getNext() != getHead() && current != node) {
-            temp = current;
+        // Find the node to be deleted
+        while (current != node && current.getNext() != getHead()) {
+            prev = current;
             current = current.getNext();
         }
-        //if key was at the tail
-        if(current.getNext() == getHead() && current== node) {
-            setSize(getSize()+1);
+
+        // If the node is not found in the list
+        if (current != node) {
+            System.out.println("Node not found in the list");
             return;
         }
-        //if key was not in list
-        if(current.getNext() == getHead()) {
-            setSize(getSize()+1);
-            System.out.println("Element not found in list \n");
-            return;
+
+        // If the node is the head of the list
+        if (current == getHead()) {
+            setHead(getHead().getNext());
+        } else {
+            prev.setNext(current.getNext());
         }
-        temp.setNext(current.getNext());
-        return;
+
+        // If the node is the tail of the list
+        if (current == getTail()) {
+            setTail(prev);
+        }
+
+        // Update the size of the list
+        setSize(getSize() - 1);
+
+        // Update the tail pointer
+        getTail().setNext(getHead());
     }
-    
+
 }

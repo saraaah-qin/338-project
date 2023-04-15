@@ -154,8 +154,8 @@ public class CSLL_Test {
         DNode tail = new DNode(3);
 
         csll.insertHead(head);
-        csll.insertTail(tail);
-        csll.insert(node, 2);
+        csll.insertHead(tail);
+        csll.insert(node, 1);
         assertEquals(node, csll.getHead().getNext());
 
     }
@@ -260,7 +260,6 @@ public class CSLL_Test {
 
         csll.delete(head2);
 
-        // assertEquals(head2, csll.search(head2));
         assertNull(csll.search(head2));
     }
 

@@ -155,9 +155,11 @@ public class DLL_Test {
         DNode middle = new DNode(2);
         DNode tail = new DNode(1);
         dll.insertHead(head);
-        dll.insertTail(tail);
+        dll.insertHead(tail);
         dll.insertHead(middle);
+
         dll.sort();
+
         assertEquals(tail, dll.getHead());
         assertEquals(middle, dll.getHead().getNext());
         assertEquals(head, dll.getTail());
