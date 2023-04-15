@@ -55,14 +55,14 @@ public class StackLL extends SLL{
     }
 
 
-    // public int peek() {
-    //     if(getHead() == null) {
-    //         System.out.println("The stack is empty");
-    //         return -1;
-    //     }
-    //     return getHead().getData();
+    public DNode peek() {
+        if(getHead() == null) {
+            System.out.println("Stack is empty");
+            return null;
+        }
+        return getHead();
     
-    // }
+    }
 
     @Override
     public void insertTail(DNode node) {
@@ -106,21 +106,22 @@ public class StackLL extends SLL{
             size--; // decrement the size of the stack
         }
     }
-    // not sure if we need this
-    // public int searchStack(int data) {
-    //     DNode current = getHead();
-    //     int count = 0;
-	// 	while(current != null && current.getData() != data) {
-	// 		current = current.getNext();
-    //         count++;
-	// 	}
-	// 	if(current != null && current.getData() == data) {
-	// 		return count;
-	// 	}
-	// 	else {
-	// 		return -1;
-	// 	}
-    // }
+    // not sure if we need this but checks to see if the node is in the stack
+    public DNode searchStack(DNode node) {
+        DNode current = getHead();
+    
+        while(current != null && current != node) {
+            current = current.getNext();
+ 
+        }
+        if(current != null && current == node) {
+            return node;
+        }
+        else {
+            return null;
+        }
+    }
+    
 
 }
 

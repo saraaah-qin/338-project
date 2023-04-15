@@ -83,13 +83,18 @@ public int getSize() {
   }
 
 
-//   public DNode peek() {
-//     if(getHead() == null) {
-//       System.out.println("The queue is empty");
-//       return null;
-//     }
-//     return getHead();
-//   }
+  public DNode peek() {
+    if(getHead() == null) {
+      System.out.println("Queue is empty");
+      return null;
+    }
+    return getHead();
+  }
+  public void clear(){
+    setHead(null);
+    setTail(null);
+    setSize(0);
+  }
 
 
 }
