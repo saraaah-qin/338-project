@@ -135,7 +135,7 @@ public class BST_test {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        bst.printInOrder(bst.getRoot());
+        bst.printInOrder();
 
         String expectedOutput = "20 30 40 50 60 70 80 ";
         assertEquals(expectedOutput, outContent.toString());

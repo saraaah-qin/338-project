@@ -150,7 +150,12 @@ public class BST {
     }
 
     // print tree in ascending order
-    public void printInOrder(TNode node) {
+    public void printInOrder() {
+        printInOrder(getRoot());
+    }
+
+    // Helper method for printInOrder() that prints the tree in ascending order
+    private void printInOrder(TNode node) {
         if (node != null) {
             printInOrder(node.getLeft());
             System.out.print(node.getData() + " ");
