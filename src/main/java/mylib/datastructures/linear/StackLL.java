@@ -84,12 +84,12 @@ public class StackLL extends SLL{
     //sort
     @Override 
     public void sort() {
-        //empty body n/a for stacks
+        //empty body for stack
     }
 
     @Override 
     public void sortedInserted(DNode node) {
-        //empty body n/a for stacks
+        //empty body for Stack
     }
 
     @Override
