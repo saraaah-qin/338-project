@@ -40,6 +40,9 @@ public class CSLL extends SLL {
     public DNode getpointerToTail() {
         return getHead();
     }
+    public void setpointerToTail(DNode pointerToTail) {
+        this.pointerToTail = pointerToTail;
+    }
 
 
 
