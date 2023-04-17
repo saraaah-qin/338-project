@@ -4,7 +4,6 @@ import main.java.mylib.datastructures.nodes.DNode;
 
 
 public class QueueLL extends SLL {
-  // queue local variables 
   private DNode head;
   private DNode tail;
   private int size;
@@ -85,7 +84,6 @@ public int getSize() {
 // peeks into the queue
   public DNode peek() {
     if(getHead() == null) {
-      System.out.println("Queue is empty");
       return null;
     }
     return getHead();

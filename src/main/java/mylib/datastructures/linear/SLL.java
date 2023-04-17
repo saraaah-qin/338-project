@@ -2,7 +2,6 @@ package main.java.mylib.datastructures.linear;
 
 import main.java.mylib.datastructures.nodes.DNode;
 
-/** Singly linked list class */
 
 public class SLL {
     private DNode head;
@@ -52,7 +51,7 @@ public class SLL {
         return null;
     }
 
-    // INSERTION METHODS
+
     // Inserts node object at head of the list
 
     public void insertHead(DNode node) {
@@ -134,7 +133,7 @@ public class SLL {
     }
 
     // SORTING METHODS
-    // checks to see if list is sorted or not
+    // checks to see if list is sorted or not if it is null and if it is ordered returns yes otherwise returns false
     public boolean isSorted() {
         DNode currentNode = getHead();
         if (currentNode == null) {
@@ -163,33 +162,27 @@ public class SLL {
             current = temp;
         }
         setHead(getSorted());
-        // System.out.println(head);
+  
     }
 
-    // created a separate sortedinserted method to use in sort to reduce confusion
-    // since the actual sortedinsert has to call sort already
-
     // SEARCH
-    // Looks up node in the list
 
     public DNode search(DNode node) {
-        DNode currentNode = getHead();
+        DNode currentNode = getHead(); // start at the head node of the list
         while (currentNode != null && currentNode != node) {
             currentNode = currentNode.getNext();
         }
-        if (currentNode != null && currentNode == node) {
+        if (currentNode != null && currentNode == node) { // if the node is found, return it
             DNode match = currentNode;
-            return match;
+            return match; // return the node
         } else {
-            return null;
+            return null; // return null if the node is not found
         }
     }
 
-    // DELETION METHODS
     // Delete head node
     public DNode deleteHead() {
-        if (getHead() == null) {
-            System.out.println("Cannot delete from empty list");
+        if (getHead() == null) { // if the list is empty, return null
             return null;
         }
         DNode temp = getHead();
@@ -198,17 +191,16 @@ public class SLL {
         return temp;
     }
 
-    // Delete tail node
-
-    public DNode deleteTail() {
+    // Delete tail node 
+    public DNode deleteTail() { // if the list is empty, return null
         if (getHead() == null) {
-            System.out.println("Cannot delete from empty list");
+
             return null;
         }
         DNode currentNode = getHead();
         DNode temp = null;
         setSize(getSize() - 1);
-        while (currentNode != null) {
+        while (currentNode != null) { // if the next node is the tail, set the next node to null and return the tail
             if (currentNode.getNext().getNext() == null) {
                 temp = currentNode.getNext();
                 currentNode.setNext(null);
@@ -221,22 +213,22 @@ public class SLL {
     }
 
     // Deletes the node if found in the list
-    public void delete(DNode node) {
+    public void delete(DNode node) { // if the list is empty, return null
         if (node == null || head == null) {
             return;
         }
         if (head == node) {
-            head = node.getNext();
+            head = node.getNext(); // if the node is the head, set the head to the next node
             return;
         }
         DNode currentNode = head;
 
-        while (currentNode.getNext() != null) {
+        while (currentNode.getNext() != null) { // if the next node is the node, set the next node to the next node of the node
             if (currentNode.getNext() == node) {
                 currentNode.setNext(currentNode.getNext().getNext());
                 return;
             }
-            currentNode = currentNode.getNext();
+            currentNode = currentNode.getNext(); // otherwise, set the current node to the next node
         }
     }
 
@@ -247,10 +239,10 @@ public class SLL {
         setHead(null);
     }
 
-    // PRINTS LIST
     // Prints the information
     public void print() {
         DNode currentNode = getHead();
+
         System.out.println("List size: " + getSize());
         System.out.println("Sorted: " + isSorted());
 
@@ -270,12 +262,12 @@ public class SLL {
         return currentNode;
     }
 
-    // get node at specific index
+    // get node at specific index in the list
 
     public DNode getNode(int position) {
         DNode currentNode = getHead();
 
-        for (int i = 0; i < position - 1; i++) {
+        for (int i = 0; i < position - 1; i++) { // if the position is greater than the size of the list, return null
             currentNode = currentNode.getNext();
 
         }
@@ -283,7 +275,7 @@ public class SLL {
         return currentNode;
     }
 
-    public void sortedInserted(DNode node) {
+    public void sortedInserted(DNode node) { // if the list is empty, set the head to the node
 
         if (getSorted() == null || getSorted().getData() >= node.getData()) {
             node.setNext(getSorted());

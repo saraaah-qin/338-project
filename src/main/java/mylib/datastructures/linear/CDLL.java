@@ -29,67 +29,68 @@ public class CDLL extends DLL{
 
     @Override
     public void insertHead(DNode node) {
-        if (getHead() == null) {
+        if (getHead() == null) { // if list is empty
             setHead(node);
             setTail(node);
             node.setNext(node);
             node.setPrev(node);
         } else {
-            node.setNext(getHead());
+            node.setNext(getHead()); // set new node's next to current head
             getHead().setPrev(node);
             setHead(node);
             getHead().setPrev(getTail());
             getTail().setNext(getHead());
         }
-        setSize(getSize()+1);
+        setSize(getSize()+1);// increment size
     }
 
     //OVERRIDE Inserts node object at the tail of the list
 
     @Override
-    public void insertTail(DNode node) {
+    public void insertTail(DNode node) { // inserts node at tail
         if (getHead() == null) {
-            setHead(node);
-            setTail(node);
-            node.setNext(node);
-            node.setPrev(node);
-        } else {
+            setHead(node); // set head to node
+            setTail(node); //   set tail to node
+            node.setNext(node);//   set next for tail
+            node.setPrev(node); // set prev for tail
+        } else { // if list is not empty
             getTail().setNext(node);
             node.setPrev(getTail());
             setTail(node);
             getHead().setPrev(getTail());
             getTail().setNext(getHead());
         }
-        setSize(getSize()+1);
+        setSize(getSize()+1); // increment size
     }
 
     //OVERRIDE Deletes the node at the specified position in the list
 
     @Override
     public void delete(DNode node) {
-        if (getHead() == null) {
-            System.out.println("Linked list is empty");
-        } else if (getSize() == 1 && (node == getHead())) {
+        if (getHead() == null) {  // if list is empty
+
+
+        } else if (getSize() == 1 && (node == getHead())) { // if list has only one node
             setHead(null);
             setTail(null);
-        } else {
+        } else { // if list has more than one node
             
             if (node == null) {
      
-            } else if (node == getHead()) {
+            } else if (node == getHead()) { // if node is head
                 setHead(getHead().getNext());
                 getHead().setPrev(getTail());
                 getTail().setNext(getHead());
-            } else if (node == getTail()) {
+            } else if (node == getTail()) { // if node is tail
                 setTail(getTail().getPrev());
                 getHead().setPrev(getTail());
                 getTail().setNext(getHead());
-            } else {
+            } else { // if node is in the middle
                 node.getPrev().setNext(node.getNext());
                 node.getNext().setPrev(node.getPrev());
             }
         }
-        setSize(getSize()-1);
+        setSize(getSize()-1); // decrement size
     }
     
 }

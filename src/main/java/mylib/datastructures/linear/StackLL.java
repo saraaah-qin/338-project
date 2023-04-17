@@ -1,42 +1,39 @@
 package main.java.mylib.datastructures.linear;
-
-
-
 import main.java.mylib.datastructures.nodes.DNode;
 
-public class StackLL extends SLL{
+public class StackLL extends SLL{ // stack is a subclass of SLL
     private DNode head;
     private int size;
 
 
-    public DNode getHead() {
-        return head;
+    public DNode getHead() {  // returns head of the list
+        return head; 
     }
 
-    public void setHead(DNode head) {
+    public void setHead(DNode head) { // sets head of the list
         this.head = head;
     }
 
-    public int getSize() {
+    public int getSize() { // returns size of the list
         return size;
     }
 
-    public void setSize(int size) {
+    public void setSize(int size) { // sets size of the list
         this.size = size;
     }
 
-    public StackLL() {
+    public StackLL() { // CONSTRUCTORS
         setHead(null);
         setSize(0);
     }
 
-    public StackLL(DNode head) {
+    public StackLL(DNode head) { // Overload constructor with a Node object argument of head
         setHead(head);
         setSize(0);
     }
 
 
-    public void push(DNode node) {
+    public void push(DNode node) { //inserts node at the top of the stack
         super.insertHead(node);
     }
 
@@ -48,16 +45,16 @@ public class StackLL extends SLL{
     
 
     public boolean isEmpty() {
-        if(getHead() == null) {
+        if(getHead() == null) { // if head is null, stack is empty
             return true;
         }
         return false;
     }
 
 
-    public DNode peek() {
+    public DNode peek() { // returns top of the stack
         if(getHead() == null) {
-            System.out.println("Stack is empty");
+        
             return null;
         }
         return getHead();
