@@ -82,7 +82,7 @@ public int getSize() {
     }
   }
 
-
+// peeks into the queue
   public DNode peek() {
     if(getHead() == null) {
       System.out.println("Queue is empty");

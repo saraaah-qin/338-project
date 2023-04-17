@@ -75,7 +75,7 @@ public class CDLL extends DLL{
         } else {
             
             if (node == null) {
-                // System.out.println("Invalid node");
+     
             } else if (node == getHead()) {
                 setHead(getHead().getNext());
                 getHead().setPrev(getTail());

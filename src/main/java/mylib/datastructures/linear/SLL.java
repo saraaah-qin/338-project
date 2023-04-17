@@ -78,8 +78,7 @@ public class SLL {
         setSize(getSize() + 1);
     }
 
-    // Inserts node object in the specified position
-    // O(n) because of getNode()
+    // Inserts node object in the specified position in the list
     public void insert(DNode node, int position) {
         setSize(getSize() + 1);
         if (getHead() == null) {
@@ -100,7 +99,6 @@ public class SLL {
     }
 
     // Inserts node object in its proper position in a sorted list
-    // Complexity O(n)
     public void sortedInsert(DNode node) {
 
         DNode currentNode = getHead();
@@ -189,7 +187,6 @@ public class SLL {
 
     // DELETION METHODS
     // Delete head node
-    // Complexity O(1)
     public DNode deleteHead() {
         if (getHead() == null) {
             System.out.println("Cannot delete from empty list");
@@ -202,8 +199,7 @@ public class SLL {
     }
 
     // Delete tail node
-    // Complexity O(n) - because you need to iterate through. If I would have held a
-    // tail reference it would be O(1)
+
     public DNode deleteTail() {
         if (getHead() == null) {
             System.out.println("Cannot delete from empty list");
@@ -225,7 +221,6 @@ public class SLL {
     }
 
     // Deletes the node if found in the list
-    // Complexity O(n)
     public void delete(DNode node) {
         if (node == null || head == null) {
             return;
@@ -246,16 +241,14 @@ public class SLL {
     }
 
     // Deletes the whole list
-    // Complexity O(1)
+
     public void clear() {
         setSize(0);
         setHead(null);
     }
 
     // PRINTS LIST
-    // Prints the list information on the screen - list length, sorted status, list
-    // content
-    // Complexity O(n)
+    // Prints the information
     public void print() {
         DNode currentNode = getHead();
         System.out.println("List size: " + getSize());
@@ -268,7 +261,7 @@ public class SLL {
     }
 
     // grabs last node in the list
-    // Complexity O(n)
+
     public DNode getLastNode() {
         DNode currentNode = getHead();
         while (currentNode.getNext() != getTail()) {
@@ -278,7 +271,7 @@ public class SLL {
     }
 
     // get node at specific index
-    // complexity - O(n)
+
     public DNode getNode(int position) {
         DNode currentNode = getHead();
 

@@ -1,12 +1,9 @@
-// package main.java.mylib.datastructures.linear;
-
-// import main.java.mylib.datastructures.nodes.DNode;
 
 package main.java.mylib.datastructures.linear;
 
 import main.java.mylib.datastructures.nodes.DNode;
 
-/** Doubly linked list class */
+// DLLclass
 
 public class DLL extends SLL {
     // INSTANCE VARIABLES
@@ -222,15 +219,15 @@ public class DLL extends SLL {
         } while (swapped);
     }
 
-    // O(n)
+
     public void sortedInserted(DNode node) {
         if (getSorted() == null || getSorted().getData() > node.getData()) {
             node.setNext(getSorted());
-            // getSorted().setPrev(node);
+          
             setSorted(node);
         } else {
             DNode currentNode = getSorted();
-            // System.out.println("geetSorted: "+getSorted());
+   
             while (currentNode.getNext() != null && currentNode.getData() != node.getData()
                     && currentNode.getNext().getData() < node.getData()) {
                 currentNode = currentNode.getNext();

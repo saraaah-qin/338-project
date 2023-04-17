@@ -41,9 +41,7 @@ public class CSLL extends SLL {
         return getHead();
     }
 
-    public void setpointerToTail(DNode pointerToTail) {
-        this.pointerToTail = pointerToTail;
-    }
+
 
     // CONSTRUCTORS
     public CSLL() {
@@ -61,7 +59,7 @@ public class CSLL extends SLL {
     }
 
     // INSERTION METHODS
-    // O(1)
+
     @Override
     public void insertHead(DNode node) {
         // System.out.println(getTail());
@@ -74,9 +72,8 @@ public class CSLL extends SLL {
 
     }
 
-    // O(n) - could have enhanced this by doing setPrev(head) to node and
-    // setNext(tail) to node
-    // but was trying to reduce the duplication of code and use the super class
+
+    // override insertTail
     @Override
     public void insertTail(DNode node) {
         super.insertTail(node);
@@ -84,7 +81,7 @@ public class CSLL extends SLL {
         node.setNext(getHead());
     }
 
-    // O(n)
+
     @Override
     public void insert(DNode node, int position) {
         super.insert(node, position);
@@ -102,13 +99,13 @@ public class CSLL extends SLL {
         if (current == null) {
             insertHead(node);
             setSize(getSize() - 1);
-            // System.out.println("UPDATED HEAD because null");
+      
         }
 
         else if (getHead().getData() >= node.getData()) {
             insertHead(node);
             setSize(getSize() - 1);
-            // System.out.println("UPDATED because head is greater than node");
+      
         }
 
         else if (getLastNode().getData() < node.getData()) {
@@ -126,7 +123,7 @@ public class CSLL extends SLL {
         setSize(getSize() + 1);
     }
 
-    // O(n^2) - nested traversal
+// overrides the sort function
     @Override
     public void sort() {
         DNode current = getHead();
@@ -151,7 +148,6 @@ public class CSLL extends SLL {
 
     // SEARCH
     // Looks up node in the list
-    // O(n)
     @Override
     public DNode search(DNode node) {
         DNode current = getHead();
@@ -167,7 +163,7 @@ public class CSLL extends SLL {
 
     // DELETION METHODS
     // Delete head node
-    // O(1)
+
     @Override
     public DNode deleteHead() {
         DNode temp = getHead();
@@ -177,7 +173,7 @@ public class CSLL extends SLL {
         return temp;
     }
 
-    // O(n)
+
     @Override
     public DNode deleteTail() {
         DNode current = getHead();
@@ -194,7 +190,7 @@ public class CSLL extends SLL {
         return temp;
     }
 
-    // Complexity O(n)
+
     @Override
     public void delete(DNode node) {
         DNode current = getHead();
